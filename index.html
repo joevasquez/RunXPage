@@ -64,6 +64,176 @@
 	#infoMenu li a {
 		color: #000;
 	}
+
+
+	/* ---- Timeline ---- */
+
+	ol {
+		position: relative;
+		display: block;
+		margin: 100px;
+		height: 4px;
+		background: #9b2;
+	}
+	ol::before,
+	ol::after {
+		content: "";
+		position: absolute;
+		top: -8px;
+		display: block;
+		width: 0;
+		height: 0;
+	  border-radius: 10px;
+		border: 10px solid #9b2;
+	}
+	ol::before {
+		left: -5px;
+	}
+	ol::after {
+		right: -10px;
+		border: 10px solid transparent;
+		border-right: 0;
+		border-left: 20px solid #9b2;
+	  border-radius: 3px;
+	}
+
+	/* ---- Timeline elements ---- */
+
+	li {
+		position: relative;
+		top: -77px;
+		display: inline-block;
+		float: left;
+		width: 140px;
+		transform: rotate(-45deg);
+		font: bold 14px arial;
+	}
+	li::before {
+		content: "";
+		position: absolute;
+		top: 3px;
+		left: -29px;
+		display: block;
+		width: 6px;
+		height: 6px;
+		border: 4px solid #9b2;
+		border-radius: 10px;
+		background: #eee;
+	}
+
+	/* ---- Details ---- */
+
+	.details {
+		display: none;
+
+		position: absolute;
+		left: -85px;
+		top: 60px;
+		padding: 15px;
+		border-radius: 3px;
+		border-right: 2px solid rgba(0,0,0,.1);
+		border-bottom: 2px solid rgba(0,0,0,.1);
+		transform: rotate(45deg);
+		font: 12px arial;
+		background: #fff;
+	}
+	.details::before {
+		content: "";
+		position: absolute;
+		left: 10px;
+		top: -9px;
+		display: block;
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-bottom-color: #fff;
+		border-top: 0;
+	}
+
+	/* ---- Hover effects ---- */
+
+	li:hover {
+		cursor: pointer;
+	  color: #28e;
+	}
+	li:hover::before {
+		top: 1px;
+		left: -31px;
+		width: 8px;
+		height: 8px;
+		border-width: 5px;
+		border-color: #28e;
+	}
+	li:hover .details {
+		display: block;
+	  color: #444;
+	}
+
+	.sectionContainer {
+		width:100%;
+		max-width:1250px;
+		margin:auto;
+	}
+
+	.sectionContainer h1 {
+		color:black;
+	}
+
+	.sectionContainer p {
+		line-height:1.4em;
+		font-size:1.2em;
+	}
+
+	/*  GRID  */
+	.section {
+		clear: both;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	/*  COLUMN SETUP  */
+	.col {
+		display: block;
+		float:left;
+		margin: 1% 0 1% 1.6%;
+	}
+	.col:first-child { margin-left: 0; }
+
+	/*  GROUPING  */
+	.group:before,
+	.group:after { content:""; display:table; }
+	.group:after { clear:both;}
+	.group { zoom:1; /* For IE 6/7 */ }
+	/*  GRID OF FOUR  */
+	.span_4_of_4 {
+		width: 100%;
+	}
+	.span_3_of_4 {
+		width: 74.6%;
+	}
+	.span_2_of_4 {
+		width: 49.2%;
+	}
+	.span_1_of_4 {
+		width: 23.8%;
+	}
+
+	/*  GO FULL WIDTH BELOW 480 PIXELS */
+	@media only screen and (max-width: 480px) {
+		.col {  margin: 1% 0 1% 0%; }
+		.span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 { width: 100%; }
+	}
+
+	.gradImage {
+	  height:500px;
+	  width:100px;
+	  background: url('http://www.ncat.edu/academics/schools-colleges1/grad/assets/gradimages/graduation%20image.jpg') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+
 	</style>
 
 	<!--[if IE]>
@@ -84,7 +254,7 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				anchors: ['firstPage'],
-				sectionsColor: ['#4A6FB1'],
+				scrollOverflow: true,
 				autoScrolling: false,
 				fitToSection:false,
 				css3: true
@@ -104,8 +274,65 @@
 			<h1>And a normal website under it</h1>
 		</div>
 
-		<div class="slide">
-			<h1>A great single slider!</h1>
+		<div class="slide" id="program" style="text-align:left">
+			<div class="sectionContainer">
+				<div class="col span_2_of_4">
+					<h1>The Program</h1>
+					<p>Craft beer umami viral kogi occupy ethical, Blue Bottle aesthetic roof party. Pop-up Godard banh mi, ethical gastropub ennui Williamsburg Blue Bottle. Leggings ugh letterpress, Tumblr cred meh master cleanse raw denim photo booth. PBR&B freegan literally Vice. Tilde leggings +1, occupy fap banh mi raw denim skateboard banjo you probably haven't heard of them. Taxidermy flexitarian pour-over small batch, flannel skateboard XOXO PBR four loko quinoa.</p>
+				</div>
+				<div class="col span_2_of_4 gradImage">
+					hello
+				</div>
+
+
+				<div style="clear:both; height:40px"></div>
+				<ol>
+				  <li>
+				    Application Opens
+				    <span class="details">
+				      Description of point 1
+				    </span>
+				  </li>
+				  <li>
+				    Applications Due
+				    <span class="details">
+				      Description of point 2
+				    </span>
+				  </li>
+				  <li>
+				    Semi-finalist Interviews
+				    <span class="details">
+				      Description of point 3
+				    </span>
+				  </li>
+				  <li>
+				    Challenge Winners Notified
+				    <span class="details">
+				      Description of point 3
+				    </span>
+				  </li>
+				  <li>
+				    Opening Convening
+				    <span class="details">
+				      Description of point 3
+				    </span>
+				  </li>
+				  <li>
+				    Accelerator Program
+				    <span class="details">
+				      Description of point 3
+				    </span>
+				  </li>
+				  <li>
+				    Closing Convening
+				    <span class="details">
+				      Description of point 3
+				    </span>
+				  </li>				  
+
+
+				</ol>
+			</div>
 		</div>
 	</div>
 </div>
